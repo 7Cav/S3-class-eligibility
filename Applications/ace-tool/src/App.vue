@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
        <transition name="fade">
-      <testje v-if="!HasBeenLoaded()"/>
+          <loading-screen v-if="!HasBeenLoaded()"/>
        </transition>
         <transition name="fade">
       <router-view v-if="HasBeenLoaded()" />
@@ -12,20 +12,19 @@
 </template>
 
 <script>
-import {RotateSquare2} from 'vue-loading-spinner'
-import Testje from './components/Testje'
+import LoadingScreen from './components/LoadingScreen'
 
 export default {
   components: {
-    Testje
+    LoadingScreen
   },
   data () {
-    return{
+    return {
       isLoaded: false
     }
   },
   methods: {
-    HasBeenLoaded()
+    HasBeenLoaded ()
     {
       return this.isLoaded;
     },

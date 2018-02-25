@@ -29,15 +29,6 @@ exports.cssLoaders = function (options) {
     }
   }
 
-  scss: generateLoaders('sass').concat(
-    {
-      loader: 'sass-resources-loader',
-      options: {
-        resources: path.resolve(__dirname, '../src/style/_variables.scss')
-      }
-    }
-  ),
-
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
