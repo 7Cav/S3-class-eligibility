@@ -1,0 +1,35 @@
+{
+  //Just a file to make sure SVCODE does not run into "Experimental decorator shenanigans"...
+  //https://ihatetomatoes.net/how-to-remove-experimentaldecorators-warning-in-vscode/
+    
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es2015",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowjs": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "node",
+    ],
+    "paths": {
+      "@/*": [
+        "Applications/*"
+      ]
+    }
+  },
+  "include": [
+    "Applications/ace-class-tool/src/**/*.ts",
+    "Applications/ace-class-tool/src/**/*.vue",
+    "Applications/ace-class-tool/src/**/*",
+    "Applications/ace-class-tool/test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
