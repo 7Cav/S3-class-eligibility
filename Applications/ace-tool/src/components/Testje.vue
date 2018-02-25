@@ -1,23 +1,21 @@
 <template>
-<div>
-    <div class="overlay">
-        <div class="wrapper">
-            <div class="rectangle-wrapper">
-                <div class="rectangle-banner">
-                
+    <div>
+        <div class="overlay">
+            <div class="wrapper">
+                <div class="rectangle-wrapper">
+                    <div class="rectangle-banner">
+                    
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-        <div class="loading-text">
-            <h1>Loading MILPACS...</h1>
+        <div>
+            <div class="loading-text">
+                <h1>Loading MILPACS...</h1>
+            </div>
+            <Circle8 class="spinner"></Circle8>
         </div>
-        <Circle8 class="spinner"></Circle8>
-    </div>
-</div>
-
- 
+    </div> 
 </template>
 
 <script>
@@ -25,7 +23,8 @@ import {Circle8} from 'vue-loading-spinner'
 export default {
     components: {
     Circle8
-  }
+  },
+  name: "testje"
 }
 </script>
 
