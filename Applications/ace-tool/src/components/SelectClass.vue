@@ -1,11 +1,9 @@
 <template>
-<transition name="fade">
     <v-flex >
         <v-flex xs12>
             <action-button-vue :item="item" v-for="item in classesData"></action-button-vue>
         </v-flex>
     </v-flex>    
-</transition>
 </template>
 
 <script>

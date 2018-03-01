@@ -13,7 +13,7 @@
               app
             >
             <v-list dense>
-              <v-list-tile >
+              <v-list-tile to="/">
                 <v-list-tile-action>
                   <v-icon>dashboard</v-icon>
                 </v-list-tile-action>
@@ -30,16 +30,18 @@
                 </v-list-tile-content>
               </v-list-tile>
             </v-list>
+            <span class="problem"><a href="https://github.com/redcrayonn/ACE/issues/new" >I have an issue!</a></span>
             </v-navigation-drawer>
             <v-toolbar app fixed clipped-left>
               <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-              <v-toolbar-title>Application</v-toolbar-title>
               <v-toolbar-title class="hack-center">{{ currentModule }}</v-toolbar-title>
             </v-toolbar>
             <v-content>
               <v-container fluid fill-height>
               <v-layout justify-center align-center>
-                <router-view />
+                <transition name="fade" mode="out-in">
+                  <router-view />
+                </transition>
               </v-layout>
               </v-container>
             </v-content>
@@ -120,5 +122,29 @@ i {
   left: 50%;
   transform: translateX(-50%);
   margin:0px;
+}
+
+.problem{
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  transform:translateX(-50%);
+
+  a{
+    color:white  !important;
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .25s;
+}
+
+.fade-enter-active {
+  transition-delay: .0;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 </style>
