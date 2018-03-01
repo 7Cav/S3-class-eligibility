@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
+  currentModule: '',
   classes: [
     {
       "id": "0",
@@ -50,9 +51,20 @@ const state = {
       ]
     }
   ],
-  selectedClass: '',
+}
+
+const mutations = {
+  setCurrentModule(state, text)
+  {
+    state.currentModule = text
+  },
+  removeCurrentModule(state)
+  {
+    state.currentModule = ''
+  }
 }
 
 export default new Vuex.Store({
-  state
+  state,
+  mutations
 })

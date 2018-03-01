@@ -1,10 +1,10 @@
 <template>
-    <v-flex>
-        <router-link to="/SelectClass">
-            <action-button-vue name="Class" />
-        </router-link>
-        <action-button-vue name="Evaluation" />
-    </v-flex>   
+        <v-flex>
+            <router-link to="/SelectClass">
+                <action-button-vue name="Class" />
+            </router-link>
+            <action-button-vue name="Evaluation" />
+        </v-flex>   
 </template>
 
 <script>

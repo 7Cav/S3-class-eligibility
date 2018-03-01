@@ -34,6 +34,7 @@
             <v-toolbar app fixed clipped-left>
               <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
               <v-toolbar-title>Application</v-toolbar-title>
+              <v-toolbar-title class="hack-center">{{ currentModule }}</v-toolbar-title>
             </v-toolbar>
             <v-content>
               <v-container fluid fill-height>
@@ -75,7 +76,12 @@ export default {
   },
   mounted() {
     this.ShowMain();
-  }
+  },
+  computed: {
+        currentModule: function(){
+            return this.$store.state.currentModule
+        }
+    },
 };
 </script>
 
@@ -107,5 +113,12 @@ i {
 
 .main{
   background-color: #BBBBBB !important;
+}
+
+.hack-center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin:0px;
 }
 </style>
