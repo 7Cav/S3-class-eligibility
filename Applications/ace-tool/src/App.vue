@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire" dark>
+  <v-app id="inspire" dark class="main">
     <v-content>
        <transition name="fade">
           <loading-screen v-if="!HasBeenLoaded()"/>
@@ -103,5 +103,9 @@ h4,
 button,
 i {
   color: $pcolor !important;
+}
+
+.main{
+  background-color: #BBBBBB !important;
 }
 </style>
