@@ -22,7 +22,7 @@
         </v-card-title>
          <v-card-actions>
            <router-link to="/Eligibility">
-              <v-btn flat>Continue</v-btn>
+              <v-btn flat v-on:click="storeSelected">Continue</v-btn>
            </router-link>
         </v-card-actions>
       </v-card>
@@ -40,6 +40,12 @@ export default {
     usersData: function()
     {
       return this.$store.state.users
+    }
+  },
+  methods: {
+    storeSelected()
+    {
+      this.$store.commit('storeSelectedAttendees', this.selected)
     }
   }
 }

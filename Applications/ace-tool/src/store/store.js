@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   currentModule: {},
+  selectedAttendees: [],
   classes: [
     {
       "id": "0",
@@ -12,9 +13,6 @@ const state = {
       "category": "Shared",
       "MilpacEntryName": "blabla",
       "requirements": [
-        {
-          "MilpacEntryName": "blablabla"
-        }
       ]
     },
     {
@@ -24,7 +22,7 @@ const state = {
       "MilpacEntryName": "blabla",
       "requirements": [
         {
-          "MilpacEntryName": "blablabla"
+          "MilpacEntryName": "Ground School"
         }
       ]
     },
@@ -35,7 +33,10 @@ const state = {
       "MilpacEntryName": "blabla",
       "requirements": [
         {
-          "MilpacEntryName": "blablabla"
+          "MilpacEntryName": "Ground School"
+        },
+        {
+          "MilpacEntryName": "Basic Rotary"
         }
       ]
     },
@@ -46,7 +47,7 @@ const state = {
       "MilpacEntryName": "blabla",
       "requirements": [
         {
-          "MilpacEntryName": "blablabla"
+          "MilpacEntryName": "Ground School"
         }
       ]
     }
@@ -178,6 +179,10 @@ const mutations = {
   removeCurrentModule(state)
   {
     state.currentModule = {}
+  },
+  storeSelectedAttendees(state, attendees)
+  {
+    state.selectedAttendees = attendees
   }
 }
 

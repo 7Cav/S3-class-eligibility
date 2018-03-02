@@ -30,7 +30,7 @@ export default {
         },
         handleClassClick: function (item) 
         {
-            this.setCurrentModule({ 'header': item.name })
+            this.setCurrentModule({ 'header': item.name, 'class': item })
         }
     },
     mounted () {
