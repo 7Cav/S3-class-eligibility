@@ -13,6 +13,12 @@ import ActionButtonVue from './ActionButton.vue';
 export default {
     components: {
         ActionButtonVue
+    },
+    mounted () {
+        this.$store.commit('setCurrentModule', { 'header': 'SELECT AN ACTIVITY'})
+    },
+    destroyed() {
+        this.$store.commit('removeCurrentModule')
     }
 }
 </script>

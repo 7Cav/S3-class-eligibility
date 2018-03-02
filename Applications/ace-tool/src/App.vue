@@ -34,7 +34,9 @@
             </v-navigation-drawer>
             <v-toolbar app fixed clipped-left>
               <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-              <v-toolbar-title class="hack-center">{{ currentModule }}</v-toolbar-title>
+              <transition name="fade" mode="out-in">
+              <v-toolbar-title class="hack-center">{{ currentModuleHeader }}</v-toolbar-title>
+              </transition>
             </v-toolbar>
             <v-content>
               <v-container fluid fill-height>
@@ -71,17 +73,16 @@ export default {
     },
     ShowMain() {
       setTimeout(() => {
-        console.log("main called");
         this.isLoaded = true;
       }, 2000);
-    }
+    },
   },
   mounted() {
     this.ShowMain();
   },
   computed: {
-        currentModule: function(){
-            return this.$store.state.currentModule
+        currentModuleHeader: function(){
+            return this.$store.state.currentModule.header
         }
     },
 };

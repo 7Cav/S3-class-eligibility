@@ -1,7 +1,9 @@
 <template>
     <v-flex >
-        <v-flex xs12>
-            <action-button-vue :item="item" v-for="item in classesData"></action-button-vue>
+        <v-flex xs12 >
+            <router-link to="/SelectAttendees">
+                <action-button-vue :item="item" v-for="item in classesData" v-on:click.native="handleClassClick(item)"></action-button-vue>
+            </router-link>
         </v-flex>
     </v-flex>    
 </template>
@@ -17,11 +19,28 @@ export default {
     components: {
         ActionButtonVue
     },
+    methods: {
+        setCurrentModule(data)
+        {
+            this.$store.commit('setCurrentModule', data)
+        },
+        destroyCurrentModule()
+        {
+            this.$store.commit('removeCurrentModule')
+        },
+        handleClassClick: function (item) 
+        {
+            this.setCurrentModule({ 'header': item.name })
+        }
+    },
     mounted () {
-        this.$store.commit('setCurrentModule', 'SELECT A CLASS')
+        this.setCurrentModule({ 'header': "SELECT A CLASS" })
     },
     destroyed() {
-        this.$store.commit('removeCurrentModule')
+        if(this.$store.currentModule.header === "SELECT A CLASS")
+        {
+            this.destroyCurrentModule()
+        }
     }
 }
 </script>

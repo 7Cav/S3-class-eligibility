@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  currentModule: '',
+  currentModule: {},
   classes: [
     {
       "id": "0",
@@ -54,13 +54,13 @@ const state = {
 }
 
 const mutations = {
-  setCurrentModule(state, text)
+  setCurrentModule(state, moduleD)
   {
-    state.currentModule = text
+    state.currentModule = moduleD
   },
   removeCurrentModule(state)
   {
-    state.currentModule = ''
+    state.currentModule = {}
   }
 }
 

@@ -23,12 +23,10 @@
 </template>
 
 <script>
-import { Circle8 } from 'vue-loading-spinner'
 import { RadarSpinner } from 'epic-spinners'
 
 export default {
   components: {
-    Circle8,
     RadarSpinner
   }
 }
