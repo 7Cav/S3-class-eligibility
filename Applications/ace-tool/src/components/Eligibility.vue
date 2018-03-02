@@ -1,10 +1,11 @@
 <template>
-  <div>
-    <h1>This just in, nope</h1>
-    <p v-for="user in checkedUsers">
-      {{ user.username }} {{ user.isValid }}
-    </p>
-  </div>
+    <v-flex xs12>
+      <v-flex class="mx-auto" lg4 md6 xs12 v-for="user in checkedUsers">
+        <v-btn block >
+          {{ user.username }} {{ user.isValid }}
+        </v-btn>  
+      </v-flex>
+    </v-flex>
 </template>
 
 <script>
