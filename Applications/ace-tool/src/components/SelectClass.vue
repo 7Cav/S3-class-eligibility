@@ -37,7 +37,7 @@ export default {
         this.setCurrentModule({ 'header': "SELECT A CLASS" })
     },
     destroyed() {
-        if(this.$store.currentModule.header === "SELECT A CLASS")
+        if(this.$store.state.currentModule.header === "SELECT A CLASS")
         {
             this.destroyCurrentModule()
         }

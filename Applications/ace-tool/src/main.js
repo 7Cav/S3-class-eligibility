@@ -13,7 +13,10 @@ import {
   VIcon,
   VGrid,
   VToolbar,
-  transitions
+  transitions,
+  VSelect,
+  VSubheader,
+  VCard
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 import store from './store/store';
@@ -28,7 +31,10 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-    transitions
+    transitions,
+    VSelect,
+    VSubheader,
+    VCard
   },
 })
 

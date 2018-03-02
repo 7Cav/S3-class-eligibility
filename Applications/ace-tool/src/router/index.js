@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import LoadingScreen from '@/components/LoadingScreen'
 import SelectClass from '@/components/SelectClass'
 import SelectModule from '@/components/SelectModule'
+import SelectAttendees from '@/components/SelectAttendees'
+import Eligibility from '@/components/Eligibility'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
       path: '/test',
       name: 'LoadingScreen',
       component: LoadingScreen
-    }
+    },
+    {
+      path: '/SelectAttendees',
+      name: 'SelectAttendees',
+      component: SelectAttendees
+    },
+    {
+      path: '/Eligibility',
+      name: 'Eligibility',
+      component: Eligibility
+    },
   ]
 })
