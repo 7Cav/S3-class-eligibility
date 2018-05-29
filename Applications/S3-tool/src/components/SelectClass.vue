@@ -2,7 +2,7 @@
     <v-flex >
         <v-flex xs12 >
             <router-link to="/SelectAttendees">
-                <action-button-vue :item="item" v-for="item in classesData" v-on:click.native="handleClassClick(item)"></action-button-vue>
+                <action-button-vue :item="item" v-for="item in classesData" :key="item.id" v-on:click.native="handleClassClick(item)"></action-button-vue>
             </router-link>
         </v-flex>
     </v-flex>    

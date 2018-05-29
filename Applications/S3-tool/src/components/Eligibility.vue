@@ -1,6 +1,6 @@
 <template>
     <v-flex xs12>
-      <v-flex class="mx-auto" lg4 md6 xs12 v-for="user in checkedUsers">
+      <v-flex class="mx-auto" lg4 md6 xs12 v-for="user in checkedUsers" :key="user.user_id">
         <v-btn block @click="redirectToMilpac(user)">
           <v-icon class="user-valid" v-if="user.isValid">check_circle</v-icon>
           <v-icon class="user-not-valid" v-if="!user.isValid">check_circle</v-icon>
