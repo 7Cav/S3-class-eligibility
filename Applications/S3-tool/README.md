@@ -19,3 +19,10 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+https://api.<domain>/v1/user/<id>/milpac
+https://api.<domain>/v1/user/<id>/records
+https://api.<domain>/v1/user/<id>/record/<int>
+https://api.<domain>/v1/user/<id>/awards
+https://api.<domain>/v1/user/<id>/award/<int>
