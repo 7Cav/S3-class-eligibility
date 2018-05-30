@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -63,11 +64,11 @@ const state = {
     },
     {
       "user_id": 12,
-        "username": "Blackburn.J",
-        "timezone": "Europe/Amsterdam",
-        "message_count": 414,
-        "like_count": 509,
-        "register_date": "2015-12-13 18:45:45"
+      "username": "Blackburn.J",
+      "timezone": "Europe/Amsterdam",
+      "message_count": 414,
+      "like_count": 509,
+      "register_date": "2015-12-13 18:45:45"
     },
     {
       "user_id": 13,
@@ -94,7 +95,7 @@ const state = {
       "register_date": "2015-12-13 18:45:45"
     }
   ],
-  milpacs:[
+  milpacs: [
     {
       "user_id": 11,
       entries: [
@@ -172,21 +173,41 @@ const state = {
 }
 
 const mutations = {
-  setCurrentModule(state, moduleD)
-  {
+  setCurrentModule(state, moduleD) {
     state.currentModule = moduleD
   },
-  removeCurrentModule(state)
-  {
+  removeCurrentModule(state) {
     state.currentModule = {}
   },
-  storeSelectedAttendees(state, attendees)
-  {
+  storeSelectedAttendees(state, attendees) {
     state.selectedAttendees = attendees
+  },
+  setUsers(state, users) {
+    state.users = users;
+  }
+}
+
+const actions = {
+  retrieveUsers(context) {
+    return new Promise((resolve, reject) => {
+      axios.get('/users/active')
+        .then(function (response) {
+          console.log(response.data.data.users);
+          context.commit('setUsers',
+            response.data.data.users
+          );
+          resolve();
+        })
+        .catch(function (error) {
+          console.log(error);
+          reject();
+        })
+    })
   }
 }
 
 export default new Vuex.Store({
   state,
-  mutations
+  mutations,
+  actions
 })
