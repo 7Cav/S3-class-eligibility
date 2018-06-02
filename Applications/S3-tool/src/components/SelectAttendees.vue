@@ -21,7 +21,7 @@
           </div>
         </v-card-title>
          <v-card-actions>
-           <router-link to="/Eligibility">
+           <router-link to="/ShowEligibility">
               <v-btn flat v-on:click="storeSelected">Continue</v-btn>
            </router-link>
         </v-card-actions>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+/* NOTE: v-select throws warning, just ignore. It wants to use user_id to select attendees, but just using the objects is faster and easier. No big performance drop. */
+
 export default {
   data: () => ({
     selected: []

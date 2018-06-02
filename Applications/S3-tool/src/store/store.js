@@ -7,6 +7,7 @@ Vue.use(Vuex)
 const state = {
   currentModule: {},
   selectedAttendees: [],
+  checkedAttendees: [],
   classes: [
     {
       "id": "0",
@@ -196,6 +197,9 @@ const mutations = {
   },
   setUsers(state, users) {
     state.users = users;
+  },
+  storeCheckedAttendees(state, attendees){
+    state.checkedAttendees = attendees;
   }
 }
 

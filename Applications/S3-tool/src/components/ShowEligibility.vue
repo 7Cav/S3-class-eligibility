@@ -14,74 +14,26 @@
 
 <script>
 import axios from 'axios';
+import eligibility from './../services/eligibilityService';
 
 export default {
   methods: {
     redirectToMilpac(user)
     {
-      window.open('https://7cav.us/rosters/');
+      window.open('https://7cav.us/rosters/profile?uniqueid=' + user.id);
     },
     retrieveMilpac(userID)
     {
-      return new Promise((resolve, reject) => {
-      axios.get('/user/' + userID + '/records')
-        .then(function (response) {
-          console.log(response.data);
-          resolve(response.data);
-        })
-        .catch(function (error) {
-          reject(error);
-        })
-      });
-    },
-    async hasRequirements(user, requirements)
-    {
-      let milpac = await this.retrieveMilpac(user);
-        
       
-      console.log(milpac.user_id)
-      //No requirements? --> always valid
-      if(requirements.length === 0)
-      {
-        console.log("skipping")
-        return true
-      }
-      let valids = []
-      //Loop through requirements
-      requirements.forEach(req => {
-        //loop through user milpacs
-        milpac.entries.forEach(record => {
-        //if requirement is met
-        if(record.details.includes(req.MilpacEntryName))
-        {
-          valids.push(true)
-          //TODO: implement break + for loop for better performance.
-        }
-        })
-      }) 
-      return valids.length == requirements.length;
     },
   },
+  mounted () {
+    eligibility.test();
+  },
   computed:{
-    checkedUsers: function()
+    checkedUsers: () => 
     {
-      let users = this.$store.state.selectedAttendees;
-      console.log("selected users: " + users[0]);
-      let requirements = this.$store.state.currentModule.class.requirements
-      users.forEach(async user => {
-        let hasRequirements = await this.hasRequirements(user.user_id, requirements);
-        if(hasRequirements)
-        {
-          user.isValid = true;
-          debugger;
-        }
-        else
-        {
-          user.isValid = false;
-          debugger;
-        }
-      });
-      return users;
+      return this.$store.state.checkedAttendees;
     }
   }
 }

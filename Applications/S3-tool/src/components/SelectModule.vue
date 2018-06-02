@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ActionButtonVue from './ActionButton.vue';
+import ActionButtonVue from './UI/ActionButton';
 
 export default {
     components: {

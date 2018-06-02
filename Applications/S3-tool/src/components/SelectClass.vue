@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ActionButtonVue from './ActionButton.vue';
+import ActionButtonVue from './UI/ActionButton';
 export default {
     computed: {
         classesData: function(){
