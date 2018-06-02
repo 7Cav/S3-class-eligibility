@@ -9,21 +9,33 @@ export default class EligibilityService {
       this.milpacService = new MilpacService();
     }
 
-    checkUserRequirements(users, requirements){
+    CheckUserRequirements(users, requirements){
       
       users.forEach(async user => {
         if(requirements && requirements.length > 0)
         {
-          let milpac = await this.milpacService.getMilpac(user);
-          console.log(milpac);
-          let testje = "s";
+          let milpac = await this.milpacService.GetRecords(user);
+
+          // Check milpac against requirements.
+          let result = this.milpacService.CheckRequirements(milpac, requirements);
+          
+          // Process result
+          if(result.isValid)
+          {
+            user.isValid = true;
+          }
+          else{
+            user.isValid = false;
+            user.missingRequirements = result.notFound;
+          }
         }
         else{
+          // Class has no requirements
           user.isValid = true;
-          user.ValidationMessage = "Class does not have any requirements";
+          user.validationMessage = "Class does not have any requirements";
         }
       });
-      
+
       return users;
     }
 }

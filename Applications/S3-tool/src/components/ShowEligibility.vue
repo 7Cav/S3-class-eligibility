@@ -31,7 +31,7 @@ export default {
     let eligibilityService = new EligibilityService();
     let attendees = this.$store.state.selectedAttendees;
     let requirements = this.$store.state.currentModule.class.requirements;
-    let checkedAttendees = eligibilityService.checkUserRequirements(attendees, requirements);
+    let checkedAttendees = eligibilityService.CheckUserRequirements(attendees, requirements);
     this.$store.commit("storeCheckedAttendees", checkedAttendees);
   },
   computed:{
