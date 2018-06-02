@@ -23,7 +23,7 @@ const state = {
       "MilpacEntryName": "blabla",
       "requirements": [
         {
-          "MilpacEntryName": "Ground School"
+          "MilpacEntryName": "Graduated ARMA3 Aviation Ground School"
         }
       ]
     },
@@ -49,6 +49,17 @@ const state = {
       "requirements": [
         {
           "MilpacEntryName": "Ground School"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "FAC",
+      "category": "The Cavalry School",
+      "MilpacEntryName": "Graduated ARMA3 Forward Air Controller Course",
+      "requirements": [
+        {
+          "MilpacEntryName": "Graduated ARMA3 Aviation Ground School"
         }
       ]
     }
@@ -180,6 +191,7 @@ const mutations = {
     state.currentModule = {}
   },
   storeSelectedAttendees(state, attendees) {
+    debugger;
     state.selectedAttendees = attendees
   },
   setUsers(state, users) {

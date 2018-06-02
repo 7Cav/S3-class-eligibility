@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   methods: {
     redirectToMilpac(user)
@@ -21,19 +23,22 @@ export default {
     },
     retrieveMilpac(userID)
     {
-      let milpacs = this.$store.state.milpacs
-      let milpac = {}
-      milpacs.forEach(data => {
-        if(data.user_id == userID)
-        {
-          milpac = data;
-        }
-      })
-      return milpac;
+      return new Promise((resolve, reject) => {
+      axios.get('/user/' + userID + '/records')
+        .then(function (response) {
+          console.log(response.data);
+          resolve(response.data);
+        })
+        .catch(function (error) {
+          reject(error);
+        })
+      });
     },
-    hasRequirements(user, requirements)
+    async hasRequirements(user, requirements)
     {
-      let milpac = this.retrieveMilpac(user)
+      let milpac = await this.retrieveMilpac(user);
+        
+      
       console.log(milpac.user_id)
       //No requirements? --> always valid
       if(requirements.length === 0)
@@ -47,7 +52,7 @@ export default {
         //loop through user milpacs
         milpac.entries.forEach(record => {
         //if requirement is met
-        if(req.MilpacEntryName == record.details)
+        if(record.details.includes(req.MilpacEntryName))
         {
           valids.push(true)
           //TODO: implement break + for loop for better performance.
@@ -61,15 +66,19 @@ export default {
     checkedUsers: function()
     {
       let users = this.$store.state.selectedAttendees;
+      console.log("selected users: " + users[0]);
       let requirements = this.$store.state.currentModule.class.requirements
-      users.forEach(user => {
-        if(this.hasRequirements(user.user_id, requirements))
+      users.forEach(async user => {
+        let hasRequirements = await this.hasRequirements(user.user_id, requirements);
+        if(hasRequirements)
         {
           user.isValid = true;
+          debugger;
         }
         else
         {
           user.isValid = false;
+          debugger;
         }
       });
       return users;
@@ -79,14 +88,15 @@ export default {
 </script>
 
 <style lang="scss">
-.user-valid, .user-not-valid{
+.user-valid,
+.user-not-valid {
   position: absolute !important;
-  left:0;
-  margin-left:1em;
+  left: 0;
+  margin-left: 1em;
 }
 
-.user-not-valid{
-  color:red !important;
+.user-not-valid {
+  color: red !important;
 }
 </style>
 
