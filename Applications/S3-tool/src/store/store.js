@@ -192,7 +192,6 @@ const mutations = {
     state.currentModule = {}
   },
   storeSelectedAttendees(state, attendees) {
-    debugger;
     state.selectedAttendees = attendees
   },
   setUsers(state, users) {
@@ -208,7 +207,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get('/users/active')
         .then(function (response) {
-          console.log(response.data.data.users);
           context.commit('setUsers',
             response.data.data.users
           );

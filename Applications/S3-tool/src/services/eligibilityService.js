@@ -1,34 +1,29 @@
+import axios from 'axios';
+import MilpacService from './milpacService';
+
 export default class EligibilityService {
     
-    test(){
-      alert('test works');
+    milpacService = null;
+
+    constructor(){
+      this.milpacService = new MilpacService();
     }
 
-    async hasRequirements(user, requirements)
-    {
-      let milpac = await this.retrieveMilpac(user);
-        
+    checkUserRequirements(users, requirements){
       
-      console.log(milpac.user_id)
-      //No requirements? --> always valid
-      if(requirements.length === 0)
-      {
-        console.log("skipping")
-        return true
-      }
-      let valids = []
-      //Loop through requirements
-      requirements.forEach(req => {
-        //loop through user milpacs
-        milpac.entries.forEach(record => {
-        //if requirement is met
-        if(record.details.includes(req.MilpacEntryName))
+      users.forEach(async user => {
+        if(requirements && requirements.length > 0)
         {
-          valids.push(true)
-          //TODO: implement break + for loop for better performance.
+          let milpac = await this.milpacService.getMilpac(user);
+          console.log(milpac);
+          let testje = "s";
         }
-        })
-      }) 
-      return valids.length == requirements.length;
-    };
+        else{
+          user.isValid = true;
+          user.ValidationMessage = "Class does not have any requirements";
+        }
+      });
+      
+      return users;
+    }
 }
