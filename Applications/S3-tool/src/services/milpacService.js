@@ -8,8 +8,9 @@ export default class EligibilityService {
 
     GetRecords(user)
     {
+        console.log(user);
         return new Promise((resolve, reject) => {
-            axios.get('/user/' + user.user_id + '/records')
+            axios.get('/user/' + user + '/records')
             .then(function (response) {
               resolve(response.data.data);
             })

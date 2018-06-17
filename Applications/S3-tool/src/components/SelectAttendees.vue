@@ -10,6 +10,7 @@
               <v-select
                 :items="usersData"
                 item-text="username"
+                item-value="user_id"
                 v-model="selected"
                 chips
                 multiple
@@ -47,7 +48,7 @@ export default {
   methods: {
     storeSelected()
     {
-      this.$store.commit('storeSelectedAttendees', this.selected)
+      this.$store.commit('storeSelectedAttendees', this.selected);
     }
   }
 }

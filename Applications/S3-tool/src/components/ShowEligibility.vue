@@ -5,7 +5,8 @@
           <v-icon class="user-valid" v-if="user.isValid">check_circle</v-icon>
           <v-icon class="user-not-valid" v-if="!user.isValid">check_circle</v-icon>
           <v-flex class="" >
-          {{ user.username }} {{ user.isValid }}
+          <!-- {{ user.username) }} {{ user.isValid }} -->
+          {{ retrieveUserName(user.user_id) }}
           </v-flex>
         </v-btn>  
       </v-flex>
@@ -22,16 +23,19 @@ export default {
     {
       window.open('https://7cav.us/rosters/profile?uniqueid=' + user.id);
     },
-    retrieveMilpac(userID)
+    retrieveUserName(user_id)
     {
-      
-    },
+      let users = this.$store.state.users;
+      let completeUser = users.filter(user => user.user_id === user_id)[0];
+      return completeUser.username;
+    }
   },
   mounted () {
     let eligibilityService = new EligibilityService();
+    let test = this.$store.dispatch("retrieveSelectedAttendees");
     let attendees = this.$store.state.selectedAttendees;
     let requirements = this.$store.state.currentModule.class.requirements;
-    let checkedAttendees = eligibilityService.CheckUserRequirements(attendees, requirements);
+    let checkedAttendees = eligibilityService.CheckUserRequirements(attendees, requirements);    
     this.$store.commit("storeCheckedAttendees", checkedAttendees);
   },
   computed:{
