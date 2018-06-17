@@ -33,7 +33,7 @@ export default class EligibilityService {
             for (let i = 0; i < records.length; i++) {
                 const record = records[i];
                 // If milpac entry contains the requirement mark found.
-                if(~record.details.indexOf(reqMilpacName))
+                if(record.details.toUpperCase().replace(/\s/g,'').indexOf(reqMilpacName.replace(/\s/g,'').toUpperCase()) === 0)
                 {
                     found = true;
                     break;
