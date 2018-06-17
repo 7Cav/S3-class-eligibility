@@ -5,7 +5,6 @@
           <v-icon class="user-valid" v-if="user.isValid">check_circle</v-icon>
           <v-icon class="user-not-valid" v-if="!user.isValid">check_circle</v-icon>
           <v-flex class="" >
-          <!-- {{ user.username) }} {{ user.isValid }} -->
           {{ retrieveUserName(user.user_id) }}
           </v-flex>
         </v-btn>  
@@ -32,7 +31,6 @@ export default {
   },
   mounted () {
     let eligibilityService = new EligibilityService();
-    let test = this.$store.dispatch("retrieveSelectedAttendees");
     let attendees = this.$store.state.selectedAttendees;
     let requirements = this.$store.state.currentModule.class.requirements;
     let checkedAttendees = eligibilityService.CheckUserRequirements(attendees, requirements);    
