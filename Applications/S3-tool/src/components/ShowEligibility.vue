@@ -1,15 +1,38 @@
 <template>
-    <v-flex xs12>
-      <v-flex class="mx-auto" lg4 md6 xs12 v-for="user in checkedUsers" :key="user.user_id">
-        <v-btn block @click="redirectToMilpac(user)">
-          <v-icon class="user-valid" v-if="user.isValid">check_circle</v-icon>
-          <v-icon class="user-not-valid" v-if="!user.isValid">check_circle</v-icon>
-          <v-flex class="" >
-          {{ retrieveUserName(user.user_id) }}
+  <v-flex xs12 lg6>
+  <!-- <v-flex class="mx-auto" lg4 md6 xs12 v-for="user in checkedUsers" :key="user.user_id">
+  <v-btn block @click="redirectToMilpac(user)">
+  <v-icon class="user-valid" v-if="user.isValid">check_circle</v-icon>
+  <v-icon class="user-not-valid" v-if="!user.isValid">check_circle</v-icon>
+  <v-flex class="" >
+  {{ retrieveUserName(user.user_id) }}
+  </v-flex>
+  </v-btn>  
+  </v-flex> -->
+
+    <v-expansion-panel
+      expand = true
+      popout = true
+      >
+      <v-expansion-panel-content v-for="user in checkedUsers" :key="user.user_id">
+        <div slot="header"> 
+          <v-flex xs12>
+            <v-icon class="user-valid item-header" v-if="user.isValid">check_circle</v-icon>
+            <v-icon class="user-not-valid" v-if="!user.isValid">report_problem</v-icon>
+            <v-flex class="user-info" >
+              {{ retrieveUserName(user.user_id) }}
+            </v-flex>
           </v-flex>
-        </v-btn>  
-      </v-flex>
-    </v-flex>
+          
+        </div>
+        <v-card>
+          <v-card-text v-for="requirement in user.missingRequirements" :key="requirement">
+            {{requirement}}
+          </v-card-text>
+        </v-card>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-flex>
 </template>
 
 <script>
@@ -47,10 +70,8 @@ export default {
 
 <style lang="scss">
 .user-valid,
-.user-not-valid {
-  position: absolute !important;
-  left: 0;
-  margin-left: 1em;
+.user-not-valid, .user-info {
+  display: inline;
 }
 
 .user-not-valid {
